@@ -62,7 +62,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(true);
       await axios.delete(`/api/stores/${params.storeId}`);
       router.refresh();
-      router.push("/")
+      router.push("/");
       toast.success("Store deleted.");
     } catch (error) {
       toast.error("Make sure you removed all products and categories first.");
@@ -121,8 +121,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
-      <Separator/>
-      <ApiAlert title="test" description="test-desc"/>
+      <Separator />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        description={`${origin}/api/${params.storeId}`}
+        variant="public"
+      />
     </>
   );
 };
